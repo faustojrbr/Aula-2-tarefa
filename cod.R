@@ -15,6 +15,11 @@ df_mut <- mu %>%
 
 new <- c(2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,
          2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020)
-mu$new <- new
+mu$ano <- new
 
-ggplot(data = mu) + geom_point(mapping = aes(x = new, y = desmatado))
+ggplot(data = mu, aes(ano, floresta))+
+  geom_line(col = "red") + 
+  ggtitle("Floresta total em Km^2")
+ggplot(data = mu) + 
+  geom_bar(mapping = aes(x = ano, y = desmatado, fill = incremento), stat = "identity") +
+  ggtitle("Desmatamento total acumulado em Km^2")
